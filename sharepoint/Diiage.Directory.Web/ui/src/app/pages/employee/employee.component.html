@@ -1,0 +1,25 @@
+<h1>Fiche employé {{ employee?.id }} - {{ employee?.firstname }} {{ employee?.surname}}
+  <button nz-button type="button" nzType="primary" nzShape="circle" title="Envoi par mail" (click)="sendSummary()"><i nz-icon nzType="mail"></i></button>
+</h1>
+<nz-descriptions nzSize="middle" nzBordered>
+  <nz-descriptions-item nzTitle="Nom" [nzSpan]="2">{{ employee?.surname}} {{ employee?.firstname }}</nz-descriptions-item>
+  <nz-descriptions-item nzTitle="Poste">{{ employee?.position }} ({{ employee?.positionLevel }})</nz-descriptions-item>
+
+  <nz-descriptions-item nzTitle="Date d'entrée" [nzSpan]="2">{{ employee?.startDate | date }}</nz-descriptions-item>
+  <nz-descriptions-item nzTitle="Salaire brut annuel">{{ employee?.annualGrossIncome | currency }}</nz-descriptions-item>
+
+  <nz-descriptions-item nzTitle="Adresse" [nzSpan]="2">{{ employee?.address?.street }}<br/>
+    {{ employee?.address?.postCode }} {{ employee?.address?.city }}<br/>
+    {{ employee?.address?.country }}</nz-descriptions-item>
+  <nz-descriptions-item nzTitle="Téléphone / Email">{{ employee?.phone }}<br/>
+    {{ employee?.email }}
+  </nz-descriptions-item>
+
+  <nz-descriptions-item nzTitle="Adresse personnelle" [nzSpan]="2">{{ employee?.personalAddress?.street }}<br/>
+    {{ employee?.personalAddress?.postCode }} {{ employee?.personalAddress?.city }}<br/>
+    {{ employee?.personalAddress?.country }}</nz-descriptions-item>
+  <nz-descriptions-item nzTitle="Téléphone / Email personnels">{{ employee?.personalPhone }}<br/>
+    {{ employee?.personalEmail }}</nz-descriptions-item>
+  <nz-descriptions-item nzTitle="Commentaires" [nzSpan]="3">{{ employee?.comments }}</nz-descriptions-item>
+</nz-descriptions>
+<div><a [routerLink]="['/employees']" >Retour à la liste</a></div>

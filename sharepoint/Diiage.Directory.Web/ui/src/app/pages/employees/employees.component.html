@@ -1,0 +1,50 @@
+<form nz-form [nzLayout]="'inline'" [formGroup]="validateForm" (ngSubmit)="submitForm()">
+  <nz-form-item>
+    <nz-form-control>
+      <nz-input-group nzPrefixIcon="user">
+        <input formControlName="surname" nz-input placeholder="Nom" />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control>
+      <nz-input-group nzPrefixIcon="user">
+        <input formControlName="firstname" nz-input placeholder="Prénom" />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control>
+      <button nz-button nzType="primary" [disabled]="!validateForm.valid"><i nz-icon nzType="search"></i>Rechercher</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>
+<div></div>
+<nz-table #employeesTable [nzData]="employees" nzSize="middle">
+  <thead>
+    <tr>
+      <th scope="col" [nzSortFn]="sortFunctions.surname">Nom</th>
+      <th scope="col" [nzSortFn]="sortFunctions.firstname">Prénom</th>
+      <th scope="col" [nzSortFn]="sortFunctions.position">Poste</th>
+      <th scope="col" [nzSortFn]="sortFunctions.positionLevel">Position</th>
+      <th scope="col" [nzSortFn]="sortFunctions.startDate">Entrée</th>
+      <th scope="col" [nzSortFn]="sortFunctions.email">Email</th>
+      <th scope="col" [nzSortFn]="sortFunctions.phone">Téléphone</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of employeesTable.data">
+      <td>{{ data.surname }}</td>
+      <td>{{ data.firstname }}</td>
+      <td>{{ data.position }}</td>
+      <td>{{ data.positionLevel }}</td>
+      <td>{{ data.startDate | date }}</td>
+      <td>{{ data.email }}</td>
+      <td>{{ data.phone }}</td>
+      <td>
+        <button nz-button nzType="primary" nzShape="circle"><a [routerLink]="['/employees', data.id ]"><i nz-icon nzType="search"></i></a></button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

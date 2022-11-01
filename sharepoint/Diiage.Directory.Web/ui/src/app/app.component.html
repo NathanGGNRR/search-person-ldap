@@ -1,0 +1,33 @@
+<nz-layout class="app-layout" *ngIf="profile">
+  <nz-sider class="menu-sidebar"
+            nzWidth="180px"
+            nzBreakpoint="md">
+    <div class="sidebar-logo">
+      <a href="/">
+        <img src="../assets/logo.png" alt="logo">
+        <h1>Annuaire</h1>
+      </a>
+    </div>
+
+    <ul nz-menu nzTheme="dark" nzMode="inline">
+      <li nz-menu-item nzMatchRouter>
+        <i nz-icon nzType="user"></i><a routerLink="/employees">Salariés</a>
+      </li>
+      <li nz-menu-item nzMatchRouter>
+        <i nz-icon nzType="question-circle"></i><a routerLink="/about">A propos</a>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <div class="app-header">
+        Bienvenue {{ profile.displayName }}
+      </div>
+    </nz-header>
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>
